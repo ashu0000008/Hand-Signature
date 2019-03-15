@@ -6,13 +6,9 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.DashPathEffect;
-import android.graphics.Matrix;
-import android.graphics.Matrix.ScaleToFit;
 import android.graphics.Paint;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.Rect;
-import android.graphics.RectF;
 import android.support.v4.view.InputDeviceCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -63,7 +59,7 @@ public class SignatureView extends View {
     }
 
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        Bitmap newBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        Bitmap newBitmap = Bitmap.createBitmap(w, h, Config.ARGB_8888);
         this.m_Canvas = new Canvas(newBitmap);
         clear();
         if (this.m_Bitmap != null) {
@@ -77,7 +73,7 @@ public class SignatureView extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int width = MeasureSpec.getSize(widthMeasureSpec);
         int height = MeasureSpec.getSize(heightMeasureSpec);
-        if (width>0) {
+        if (width > 0) {
             //高版本手机不调用问题
             this.m_CropTopLeft = new Point((float) width, (float) height);
             this.m_CropBotRight = new Point(0.0f, 0.0f);
